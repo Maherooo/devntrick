@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Devntric</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #02040a;
+            --orange: #ff8a00;
+            --blue: #0096ff;
+            --pink: #ff0096;
+            --green: #00ff64;
+            --red: #ff3131;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 5% 10%, rgba(77, 73, 255, 0.12) 0%, transparent 35%),
+                radial-gradient(circle at 95% 90%, rgba(255, 75, 43, 0.08) 0%, transparent 35%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar (Same as Index) --- */
+        .navbar {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 1.5rem 0;
+        }
+        .navbar-brand { font-weight: 800; font-size: 2rem; }
+        
+        .navbar-nav { display: flex; flex-direction: row; align-items: center; }
+        .nav-item { position: relative; display: flex; align-items: center; }
+        
+        /* Vertical Divider between links */
+        .nav-item:not(:last-child)::after {
+            content: "";
+            height: 14px; width: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            position: absolute; right: 0;
+        }
+
+        .nav-link {
+    position: relative;
+    opacity: 1 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Aro smooth transition */
+    text-decoration: none;
+}
+        /* Smooth Gradient Underline on Hover */
+        .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Text er koto niche thakbe */
+    left: 0;
+    width: 0; /* Prothome 0 thakbe */
+    height: 2px;
+    background: linear-gradient(90deg, #4d49ff, #a24bfe, #ff4b2b); /* Tomar design-er gradient colors */
+    transition: width 0.4s ease; /* Smoothly boro hobe */
+    border-radius: 10px;
+}
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* Profile Circle */
+        .profile-circle {
+            background: #4d49ff;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* --- Contact Content Design --- */
+        .hero-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 16px; border-radius: 50px;
+            font-size: 0.65rem; letter-spacing: 1px;
+            display: inline-block; margin-bottom: 1.5rem;
+        }
+        .hero-title { font-size: 4rem; font-weight: 800; line-height: 1.1; margin: 0; }
+        .grad-text {
+            background: linear-gradient(90deg, #ff6b6b, #a24bfe, #4d49ff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* Vertical Social Cards */
+        .contact-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            padding: 25px 30px;
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.4s ease;
+            margin-bottom: 16px;
+        }
+
+        .contact-card:hover { transform: scale(1.02); background: rgba(255, 255, 255, 0.05); }
+
+        .card-icon-box {
+            width: 50px; height: 50px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Circle Arrow Button on Right */
+        .circle-btn {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: white; transition: 0.3s;
+        }
+        .contact-card:hover .circle-btn { background: white; color: black; border-color: white; }
+
+        /* Color Glows */
+        .glow-blue { border-color: rgba(0, 150, 255, 0.3); }
+        .glow-blue:hover { border-color: var(--blue); box-shadow: 0 0 25px rgba(0, 150, 255, 0.15); }
+        
+        .glow-pink { border-color: rgba(255, 0, 150, 0.3); }
+        .glow-pink:hover { border-color: var(--pink); box-shadow: 0 0 25px rgba(255, 0, 150, 0.15); }
+        
+        .glow-red { border-color: rgba(255, 49, 49, 0.3); }
+        .glow-red:hover { border-color: var(--red); box-shadow: 0 0 25px rgba(255, 49, 49, 0.15); }
+
+        .glow-green { border-color: rgba(0, 255, 100, 0.3); }
+        .glow-green:hover { border-color: var(--green); box-shadow: 0 0 25px rgba(0, 255, 100, 0.15); }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar (Index er motoi same) -->
+    <nav class="navbar navbar-expand-lg py-4">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Devntric</a>
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="code.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Our Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Our Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Our Courses</a></li>
+                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>               
+                </ul>
+            </div>
+            <div class="profile-circle bg-primary rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 45px; height: 45px;">D</div>
+        </div>
+    </nav>
+
+    <!-- Main Contact Page Content -->
+    <section class="container py-5 mt-5">
+        <div class="row g-5 align-items-center">
+            
+            <!-- Left Side Text -->
+            <div class="col-lg-5">
+                <div class="hero-tag">LET'S CONNECT AND CREATE TOGETHER.</div>
+                <h1 class="hero-title">Let's Build</h1>
+                <h1 class="hero-title grad-text">Something Amazing Together.</h1>
+                <p class="text-secondary mt-4 mb-5" style="max-width: 440px;">
+                    Have a question, project idea, or just want to say hello? We'd love to hear from you.
+                </p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2" style="background: linear-gradient(90deg, #4d49ff, #ff4b2b); border:none;">
+                    Get in Touch <i class="fa-solid fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+            <!-- Right Side Vertical Cards -->
+            <div class="col-lg-7">
+                
+                <!-- Facebook -->
+                <div class="contact-card glow-blue">
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="card-icon-box" style="color: var(--blue);"><i class="fa-brands fa-facebook-f"></i></div>
+                        <div>
+                            <h4 class="mb-1 fw-bold">Facebook</h4>
+                            <p class="mb-0 text-secondary small">Follow us for updates and behind the scenes.</p>
+                        </div>
+                    </div>
+                    <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+
+                <!-- Instagram -->
+                <div class="contact-card glow-pink">
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="card-icon-box" style="color: var(--pink);"><i class="fa-brands fa-instagram"></i></div>
+                        <div>
+                            <h4 class="mb-1 fw-bold">Instagram</h4>
+                            <p class="mb-0 text-secondary small">See our latest work and creative moments.</p>
+                        </div>
+                    </div>
+                    <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+
+                <!-- YouTube -->
+                <div class="contact-card glow-red">
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="card-icon-box" style="color: var(--red);"><i class="fa-brands fa-youtube"></i></div>
+                        <div>
+                            <h4 class="mb-1 fw-bold">YouTube</h4>
+                            <p class="mb-0 text-secondary small">Watch tutorials, insights, and product demos.</p>
+                        </div>
+                    </div>
+                    <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-card glow-green">
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="card-icon-box" style="color: var(--green);"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4 class="mb-1 fw-bold">Email</h4>
+                            <p class="mb-0 text-secondary small">Drop us a mail anytime. We'll get back to you soon.</p>
+                        </div>
+                    </div>
+                    <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

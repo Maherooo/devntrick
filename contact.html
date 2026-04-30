@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devntric | Software Solutions</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="code.css">
+    <!-- <link rel="stylesheet" href="code.css"> -->
+</head>
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg py-4">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Devntric</a>
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="code.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Our Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Our Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Our Courses</a></li>
+                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>               
+                </ul>
+            </div>
+            <div class="profile-circle bg-primary rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 45px; height: 45px;">D</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="container py-5 mt-1">
+        <div class="row g-5 align-items-center">
+            
+            <!-- Left Side Text -->
+            <div class="col-lg-5">
+                <div class="hero-tagline"> <i class="fa-solid fa-code me-2"></i>LET'S CONNECT AND CREATE TOGETHER.</div>
+                <h1 class="hero-title">Let's Build</h1>
+                <h1 class="hero-title grad-text mb-4">Something <br> Amazing Together.</h1>
+                <p class="text-secondary mb-5 fs-5" style="max-width: 450px;">
+                    Have a question, project idea, or just want to say hello? We'd love to hear from you. Reach out to us through any of the channels below.
+                </p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2" style="background: linear-gradient(90deg, #4d49ff, #ff4b2b); border:none;">
+                    Get in Touch <i class="fa-solid fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+            <!-- Right Side Vertical Cards -->
+            <div class="col-lg-7">
+    <!-- Facebook -->
+    <div class="contact-card1 glow-blue">
+        <div class="d-flex align-items-center gap-4">
+            <div class="card-icon-box" style="color: var(--blue);"><i class="fa-brands fa-facebook-f"></i></div>
+            <div>
+                <h4 class="mb-1">Facebook</h4>
+                <p class="mb-0 text-secondary">Follow us for updates and behind the scenes.</p>
+            </div>
+        </div>
+        <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="contact-card2 glow-pink">
+        <div class="d-flex align-items-center gap-4">
+            <div class="card-icon-box" style="color: var(--pink);"><i class="fa-brands fa-instagram"></i></div>
+            <div>
+                <h4 class="mb-1">Instagram</h4>
+                <p class="mb-0 text-secondary">See our latest work and creative moments.</p>
+            </div>
+        </div>
+        <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+
+    <!-- YouTube -->
+    <div class="contact-card3 glow-red">
+        <div class="d-flex align-items-center gap-4">
+            <div class="card-icon-box" style="color: var(--red);"><i class="fa-brands fa-youtube"></i></div>
+            <div>
+                <h4 class="mb-1">YouTube</h4>
+                <p class="mb-0 text-secondary">Watch tutorials, insights, and product demos.</p>
+            </div>
+        </div>
+        <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+
+    <!-- Email -->
+    <div class="contact-card4 glow-green">
+        <div class="d-flex align-items-center gap-4">
+            <div class="card-icon-box" style="color: var(--green);"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+                <h4 class="mb-1">Email</h4>
+                <p class="mb-0 text-secondary">Drop us a mail anytime. We'll get back to you soon.</p>
+            </div>
+        </div>
+        <div class="circle-btn"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+</div>
+        </div>
+    </section>
+    <!-- Bootstrap JS -->
+     <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const homeSection = document.querySelector('section');
+
+    const setHomeActive = () => {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const homeBtn = Array.from(navLinks).find(link => link.innerText === 'Contact');
+        if (homeBtn) homeBtn.classList.add('active');
+    };
+
+    setHomeActive();
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const linkText = this.innerText.trim();
+
+            // Jodi "Home" click kora hoy
+            if (linkText === 'Contact') {
+                e.preventDefault();
+                
+                // Show home section smoothly
+                homeSection.style.display = 'block';
+                homeSection.style.opacity = '0';
+                setTimeout(() => {
+                    homeSection.style.transition = 'opacity 0.5s ease';
+                    homeSection.style.opacity = '1';
+                }, 10);
+
+                // Navbar active state switch
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                // Page scroll up
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } 
+            else {
+                // Onno section click korle Home hide kora (Jodi tumi chao)
+                // homeSection.style.display = 'none'; 
+                
+                // Active class switch logic
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+});
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
